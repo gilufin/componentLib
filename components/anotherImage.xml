@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+<component name="anotherImage" extends="Poster">
+	<script type="text/brightscript">
+    		<![CDATA[
+			sub init()
+				m.lastFocused = m.top.getScene().focusedChild
+				m.top.uri = "pkg:/images/logo.png"
+			end sub
+			function onKeyEvent(key as String, press as Boolean) as Boolean
+				print "key at another Image : " key press
+				if press
+					if key = "right"
+						m.top.uri = "http://portal.g-mana.live/app/fav.png"
+						print m.top.uri
+						return true
+
+					else if key = "left"
+						m.top.visible = false
+						m.lastFocused.setFocus(true)
+						return true
+					end if
+				end if
+				return false
+			end function
+		]]>
+	</script>
+
+</component>
